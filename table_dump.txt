@@ -1,0 +1,217 @@
+CREATE TABLE public.inspections
+(
+    activity_date text COLLATE pg_catalog."default",
+    owner_id text COLLATE pg_catalog."default",
+    owner_name text COLLATE pg_catalog."default",
+    facility_id text COLLATE pg_catalog."default",
+    facility_name text COLLATE pg_catalog."default",
+    record_id text COLLATE pg_catalog."default",
+    program_name text COLLATE pg_catalog."default",
+    program_status text COLLATE pg_catalog."default",
+    program_element_pe bigint,
+    pe_desc text COLLATE pg_catalog."default",
+    facility_address text COLLATE pg_catalog."default",
+    facility_city text COLLATE pg_catalog."default",
+    facility_state text COLLATE pg_catalog."default",
+    facility_zip text COLLATE pg_catalog."default",
+    service_code bigint,
+    service_desc text COLLATE pg_catalog."default",
+    score double precision,
+    grade text COLLATE pg_catalog."default",
+    serial_number text COLLATE pg_catalog."default",
+    employee_id text COLLATE pg_catalog."default",
+    location text COLLATE pg_catalog."default",
+    supervisorial_district_boundaries double precision,
+    census_tracts_2010 double precision,
+    board_approved_statistical_areas double precision,
+    zip_code double precision
+)
+
+TABLESPACE pg_default;
+
+=====================================================================================================================================
+
+CREATE TABLE public.violations
+(
+    serial_number text COLLATE pg_catalog."default",
+    violation_status text COLLATE pg_catalog."default",
+    violation_code text COLLATE pg_catalog."default",
+    violation_desc text COLLATE pg_catalog."default",
+    points bigint
+)
+
+TABLESPACE pg_default;
+
+======================================================================================================================================
+
+CREATE TABLE public.violations_aggregated
+(
+    serial_number text COLLATE pg_catalog."default",
+    num_violations bigint,
+    violation_type text COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+=========================================================================================================================================
+
+CREATE TABLE public.inspections_enriched
+(
+    activity_date text COLLATE pg_catalog."default",
+    owner_id text COLLATE pg_catalog."default",
+    owner_name text COLLATE pg_catalog."default",
+    facility_id text COLLATE pg_catalog."default",
+    facility_name text COLLATE pg_catalog."default",
+    record_id text COLLATE pg_catalog."default",
+    program_name text COLLATE pg_catalog."default",
+    program_status text COLLATE pg_catalog."default",
+    program_element_pe bigint,
+    pe_desc text COLLATE pg_catalog."default",
+    facility_address text COLLATE pg_catalog."default",
+    facility_city text COLLATE pg_catalog."default",
+    facility_state text COLLATE pg_catalog."default",
+    facility_zip text COLLATE pg_catalog."default",
+    service_code bigint,
+    service_desc text COLLATE pg_catalog."default",
+    score double precision,
+    grade text COLLATE pg_catalog."default",
+    serial_number text COLLATE pg_catalog."default",
+    employee_id text COLLATE pg_catalog."default",
+    location text COLLATE pg_catalog."default",
+    supervisorial_district_boundaries double precision,
+    census_tracts_2010 double precision,
+    board_approved_statistical_areas double precision,
+    zip_code double precision,
+    num_violations bigint,
+    violation_type text COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+===============================================================================================================================================
+
+CREATE TABLE public.inspections_cleaned
+(
+    activity_date timestamp without time zone,
+    owner_id text COLLATE pg_catalog."default",
+    owner_name text COLLATE pg_catalog."default",
+    facility_id text COLLATE pg_catalog."default",
+    facility_name text COLLATE pg_catalog."default",
+    record_id text COLLATE pg_catalog."default",
+    program_name text COLLATE pg_catalog."default",
+    program_status text COLLATE pg_catalog."default",
+    program_element_pe bigint,
+    pe_desc text COLLATE pg_catalog."default",
+    facility_address text COLLATE pg_catalog."default",
+    facility_city text COLLATE pg_catalog."default",
+    facility_state text COLLATE pg_catalog."default",
+    facility_zip text COLLATE pg_catalog."default",
+    service_code bigint,
+    service_desc text COLLATE pg_catalog."default",
+    score double precision,
+    grade text COLLATE pg_catalog."default",
+    serial_number text COLLATE pg_catalog."default",
+    employee_id text COLLATE pg_catalog."default",
+    location text COLLATE pg_catalog."default",
+    supervisorial_district_boundaries double precision,
+    census_tracts_2010 double precision,
+    board_approved_statistical_areas double precision,
+    zip_code bigint,
+    num_violations bigint,
+    violation_type text COLLATE pg_catalog."default",
+    location_clean text COLLATE pg_catalog."default",
+    location_long double precision,
+    location_lat double precision,
+    activity_yr bigint,
+    seating_capacity text COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+======================================================================================================================================================
+
+CREATE TABLE public.statistics_zip_code
+(
+    zip_code bigint,
+    activity_yr bigint,
+    median_score double precision,
+    mean_score double precision,
+    mode_score double precision
+)
+
+TABLESPACE pg_default;
+
+======================================================================================================================================================
+
+CREATE TABLE public.statistics_seating_type
+(
+    pe_desc text COLLATE pg_catalog."default",
+    activity_yr bigint,
+    median_score double precision,
+    mean_score double precision,
+    mode_score double precision
+)
+
+TABLESPACE pg_default;
+
+======================================================================================================================================================
+
+CREATE TABLE public.statistics_seating_capacity
+(
+    seating_capacity text COLLATE pg_catalog."default",
+    activity_yr bigint,
+    median_score double precision,
+    mean_score double precision,
+    mode_score double precision
+)
+
+TABLESPACE pg_default;
+
+=======================================================================================================================================================
+
+CREATE TABLE public.viz_zip_code
+(
+    activity_yr bigint,
+    zip_code bigint,
+    num_facilities bigint,
+    avg_violation_per_facility double precision
+)
+
+TABLESPACE pg_default;
+
+========================================================================================================================================================
+
+CREATE TABLE public.viz_violation_type
+(
+    activity_yr bigint,
+    violation_type text COLLATE pg_catalog."default",
+    number_of_facilities bigint
+)
+
+TABLESPACE pg_default;
+
+=========================================================================================================================================================
+
+CREATE TABLE public.viz_num_violations
+(
+    activity_yr bigint,
+    num_violations bigint,
+    num_facility bigint
+)
+
+TABLESPACE pg_default;
+
+==========================================================================================================================================================
+
+CREATE TABLE public.viz_geography
+(
+    activity_yr bigint,
+    location_lat double precision,
+    location_long double precision,
+    num_facilities bigint,
+    avg_violation_per_facility double precision
+)
+
+TABLESPACE pg_default;
+
+=============================================================================================================================================================

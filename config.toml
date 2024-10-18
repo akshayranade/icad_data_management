@@ -1,0 +1,15 @@
+#Database credentials
+[postgres_credentials]
+username='postgres'
+password='admin'
+host='127.0.0.1'
+port='5432'
+
+[db_details]
+dbname='icad_db'
+school_master='school_master'
+all_students='all_students'
+compitative_exams = 'compitative_exams'
+cpa_results = 'cpa_results'
+exam_marks = 'exam_marks'
+admissions = 'admissions'
