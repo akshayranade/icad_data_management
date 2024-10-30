@@ -1,7 +1,7 @@
 #Database credentials
 [postgres_credentials]
 username='postgres'
-password='admin'
+password=''
 host='127.0.0.1'
 port='5432'
 
@@ -13,3 +13,6 @@ compitative_exams = 'compitative_exams'
 cpa_results = 'cpa_results'
 exam_marks = 'exam_marks'
 admissions = 'admissions'
+
+[file_locations]
+all_schools = '/Users/akshayranade/Documents/Personal/icad_data_management/data/sales/activity_report.csv'
